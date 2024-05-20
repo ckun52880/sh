@@ -29,7 +29,15 @@ or
 ```bash
 curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh
 ```
-
+### 启动与删除脚本
+#### 启动脚本
+```bash
+./kejilion.sh
+```
+#### 删除脚本
+```bash
+rm ./kejilion.sh
+```
 
 ***
 ### 觉得脚本还可以USTD TRC20打赏
