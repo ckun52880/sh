@@ -1,23 +1,44 @@
 #!/bin/bash
 
+# 定义一个函数 `sh_download`，用于下载并执行 `kejilion.sh` 脚本
 sh_download() {
-country=$(curl -s ipinfo.io/country)
-ipv6_address=$(curl -s --max-time 1 ipv6.ip.sb)
-if [ "$country" = "CN" ]; then
-    cd ~
-    curl -sS -O https://gh.kejilion.pro/https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh
-    sed -i 's/canshu="default"/canshu="CN"/g' ./kejilion.sh > /dev/null 2>&1
-    ./kejilion.sh
-elif [ -n "$ipv6_address" ]; then
-    cd ~
-    curl -sS -O https://gh.kejilion.pro/https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh
-    sed -i 's/canshu="default"/canshu="V6"/g' ./kejilion.sh > /dev/null 2>&1
-    ./kejilion.sh
-else
-    cd ~
-    curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh
-fi
+    # 获取用户所在的国家代码（例如 "CN" 表示中国）
+    country=$(curl -s ipinfo.io/country)
+    # 获取用户的 IPv6 地址，设置请求超时为 1 秒
+    ipv6_address=$(curl -s --max-time 1 ipv6.ip.sb)
 
+    # 如果用户的国家是中国
+    if [ "$country" = "CN" ]; then
+        # 切换到用户的主目录
+        cd ~
+        # 下载 `kejilion.sh` 脚本并赋予可执行权限
+        curl -sS -O https://gh.kejilion.pro/https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh
+        # 将脚本内的 `canshu="default"` 替换为 `canshu="CN"`
+        sed -i 's/canshu="default"/canshu="CN"/g' ./kejilion.sh > /dev/null 2>&1
+        # 执行下载的 `kejilion.sh` 脚本
+        ./kejilion.sh
+
+    # 否则，如果用户具有 IPv6 地址
+    elif [ -n "$ipv6_address" ]; then
+        # 切换到用户的主目录
+        cd ~
+        # 下载 `kejilion.sh` 脚本并赋予可执行权限
+        curl -sS -O https://gh.kejilion.pro/https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh
+        # 将脚本内的 `canshu="default"` 替换为 `canshu="V6"`
+        sed -i 's/canshu="default"/canshu="V6"/g' ./kejilion.sh > /dev/null 2>&1
+        # 执行下载的 `kejilion.sh` 脚本
+        ./kejilion.sh
+
+    # 否则，即用户不在中国且没有 IPv6 地址
+    else
+        # 切换到用户的主目录
+        cd ~
+        # 下载 `kejilion.sh` 脚本并赋予可执行权限
+        curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh
+        # 直接执行下载的 `kejilion.sh` 脚本，无需修改
+        ./kejilion.sh
+    fi
 }
 
+# 调用 `sh_download` 函数
 sh_download
