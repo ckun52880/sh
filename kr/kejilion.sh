@@ -1180,7 +1180,7 @@ iptables_panel() {
 
 			  5)
 				  # IP 화이트리스트
-				  read -e -p "릴리스하려면 IP 또는 IP 세그먼트를 입력하십시오." o_ip
+				  read -e -p "해제 할 IP 또는 IP 세그먼트를 입력하십시오." o_ip
 				  allow_ip $o_ip
 				  ;;
 			  6)
@@ -8040,7 +8040,7 @@ linux_ldnmp() {
 	  echo "Redis Port : 6379"
 	  echo ""
 	  echo "웹 사이트 URL : https : //$yuming"
-	  echo "백엔드 로그인 경로 : /admin"
+	  echo "백그라운드 로그인 경로 : /admin"
 	  echo "------------------------"
 	  echo "사용자 이름 : 관리자"
 	  echo "비밀번호 : 관리자"
@@ -13023,7 +13023,7 @@ EOF
 								  (crontab -l ; echo "0 0 * * $weekday $newquest") | crontab - > /dev/null 2>&1
 								  ;;
 							  3)
-								  read -e -p "매일 작업을 수행 할 시간을 선택하십시오. (시간, 0-23) :" hour
+								  read -e -p "매일 작업을 수행 할시기를 선택 하시겠습니까? (시간, 0-23) :" hour
 								  (crontab -l ; echo "0 $hour * * * $newquest") | crontab - > /dev/null 2>&1
 								  ;;
 							  4)
@@ -13736,7 +13736,7 @@ linux_file() {
 
 				# -r 옵션을 사용하여 디렉토리를 재귀 적으로 복사하십시오
 				cp -r "$src_path" "$dest_path" && echo "파일 또는 디렉토리가 복사되었습니다$dest_path" || echo "파일이나 디렉토리를 복사하지 못했습니다"
-				send_stats "파일 또는 디렉토리를 복사하십시오"
+				send_stats "파일 또는 디렉토리를 복사합니다"
 				;;
 
 

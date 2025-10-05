@@ -1733,7 +1733,7 @@ nginx_waf() {
 		wget -O /home/web/nginx.conf "${gh_proxy}raw.githubusercontent.com/kejilion/nginx/main/nginx10.conf"
 	fi
 
-	# モードパラメーターに従ってWAFをオンまたはオフにすることを決定します
+	# モードパラメーターに従ってWAFをオンまたはオフにすることにしました
 	if [ "$mode" == "on" ]; then
 		# WAFをオンにしてください：コメントを削除します
 		sed -i 's|# load_module /etc/nginx/modules/ngx_http_modsecurity_module.so;|load_module /etc/nginx/modules/ngx_http_modsecurity_module.so;|' /home/web/nginx.conf > /dev/null 2>&1
@@ -8040,7 +8040,7 @@ linux_ldnmp() {
 	  echo "Redisポート：6379"
 	  echo ""
 	  echo "ウェブサイトURL：https：//$yuming"
-	  echo "バックエンドログインパス： /admin"
+	  echo "バックグラウンドログインパス： /admin"
 	  echo "------------------------"
 	  echo "ユーザー名：admin"
 	  echo "パスワード：管理者"
@@ -13023,7 +13023,7 @@ EOF
 								  (crontab -l ; echo "0 0 * * $weekday $newquest") | crontab - > /dev/null 2>&1
 								  ;;
 							  3)
-								  read -e -p "毎日タスクを実行する時間を選択しますか？ （時間、0-23）：" hour
+								  read -e -p "毎日タスクを実行する時期を選択しますか？ （時間、0-23）：" hour
 								  (crontab -l ; echo "0 $hour * * * $newquest") | crontab - > /dev/null 2>&1
 								  ;;
 							  4)

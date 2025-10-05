@@ -1180,7 +1180,7 @@ iptables_panel() {
 
 			  5)
 				  # IP whitelist
-				  read -e -p "Please enter the IP or IP segment to release:" o_ip
+				  read -e -p "Please enter the IP or IP segment to be released:" o_ip
 				  allow_ip $o_ip
 				  ;;
 			  6)
@@ -1733,7 +1733,7 @@ nginx_waf() {
 		wget -O /home/web/nginx.conf "${gh_proxy}raw.githubusercontent.com/kejilion/nginx/main/nginx10.conf"
 	fi
 
-	# Decide to turn on or off WAF according to mode parameters
+	# Decide to turn on or off WAF according to the mode parameter
 	if [ "$mode" == "on" ]; then
 		# Turn on WAF: Remove comments
 		sed -i 's|# load_module /etc/nginx/modules/ngx_http_modsecurity_module.so;|load_module /etc/nginx/modules/ngx_http_modsecurity_module.so;|' /home/web/nginx.conf > /dev/null 2>&1
@@ -5971,7 +5971,7 @@ ssh_manager() {
 	while true; do
 		clear
 		echo "SSH Remote Connection Tool"
-		echo "Can connect to other Linux systems via SSH"
+		echo "Can be connected to other Linux systems via SSH"
 		echo "------------------------"
 		list_connections
 		echo "1. Create a new connection 2. Use a connection 3. Delete a connection"
@@ -8040,7 +8040,7 @@ linux_ldnmp() {
 	  echo "Redis port: 6379"
 	  echo ""
 	  echo "Website url: https://$yuming"
-	  echo "Backend login path: /admin"
+	  echo "Background login path: /admin"
 	  echo "------------------------"
 	  echo "Username: admin"
 	  echo "Password: admin"
@@ -13023,7 +13023,7 @@ EOF
 								  (crontab -l ; echo "0 0 * * $weekday $newquest") | crontab - > /dev/null 2>&1
 								  ;;
 							  3)
-								  read -e -p "Choose what time to perform tasks every day? (Hours, 0-23):" hour
+								  read -e -p "Choose when to perform tasks every day? (Hours, 0-23):" hour
 								  (crontab -l ; echo "0 $hour * * * $newquest") | crontab - > /dev/null 2>&1
 								  ;;
 							  4)
