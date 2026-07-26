@@ -8592,7 +8592,7 @@ linux_ldnmp() {
 	echo -e "${gl_huang}29.  ${gl_bai}Stream四层代理转发                ${gl_huang}30.  ${gl_bai}自定义静态站点"
 	echo -e "${gl_huang}------------------------"
 	echo -e "${gl_huang}31.  ${gl_bai}站点数据管理 ${gl_huang}★${gl_bai}                    ${gl_huang}32.  ${gl_bai}备份全站数据"
-	echo -e "${gl_huang}33.  ${gl_bai}スケジュールされたリモートバックアップ${gl_huang}34.  ${gl_bai}还原全站数据"
+	echo -e "${gl_huang}33.  ${gl_bai}定时远程备份                      ${gl_huang}34.  ${gl_bai}还原全站数据"
 	echo -e "${gl_huang}------------------------"
 	echo -e "${gl_huang}35.  ${gl_bai}防护LDNMP环境                     ${gl_huang}36.  ${gl_bai}优化LDNMP环境"
 	echo -e "${gl_huang}37.  ${gl_bai}更新LDNMP环境                     ${gl_huang}38.  ${gl_bai}卸载LDNMP环境"
@@ -8645,9 +8645,9 @@ linux_ldnmp() {
 
 	  ldnmp_web_on
 	  echo "数据库地址: mysql"
-	  echo "データベース名:$dbname"
+	  echo "数据库名: $dbname"
 	  echo "用户名: $dbuse"
-	  echo "密码: $dbusepasswd"
+	  echo "パスワード：$dbusepasswd"
 	  echo "表前缀: discuz_"
 
 
@@ -8655,9 +8655,9 @@ linux_ldnmp() {
 
 	  4)
 	  clear
-	  # 可道云桌面
+	  # Kedao クラウド デスクトップ
 	  webname="Kedao クラウド デスクトップ"
-	  send_stats "インストール$webname"
+	  send_stats "安装$webname"
 	  echo "开始部署 $webname"
 	  add_yuming
 	  repeat_add_yuming
@@ -8683,17 +8683,17 @@ linux_ldnmp() {
 	  restart_ldnmp
 
 	  ldnmp_web_on
-	  echo "数据库地址: mysql"
-	  echo "用户名: $dbuse"
+	  echo "データベースアドレス: mysql"
+	  echo "ユーザー名:$dbuse"
 	  echo "密码: $dbusepasswd"
-	  echo "データベース名:$dbname"
-	  echo "redis主机: redis"
+	  echo "数据库名: $dbname"
+	  echo "redisホスト: redis"
 
 		;;
 
 	  5)
 	  clear
-	  # 苹果CMS
+	  # AppleCMS
 	  webname="AppleCMS"
 	  send_stats "インストール$webname"
 	  echo "導入を開始する$webname"
@@ -8727,9 +8727,9 @@ linux_ldnmp() {
 
 
 	  ldnmp_web_on
-	  echo "数据库地址: mysql"
+	  echo "データベースアドレス: mysql"
 	  echo "データベースポート: 3306"
-	  echo "数据库名: $dbname"
+	  echo "データベース名:$dbname"
 	  echo "ユーザー名:$dbuse"
 	  echo "密码: $dbusepasswd"
 	  echo "データベース接頭辞: mac_"
@@ -8744,7 +8744,7 @@ linux_ldnmp() {
 	  # 一本足のナンバーカード
 	  webname="一本足のナンバーカード"
 	  send_stats "インストール$webname"
-	  echo "導入を開始する$webname"
+	  echo "开始部署 $webname"
 	  add_yuming
 	  repeat_add_yuming
 	  ldnmp_install_status
@@ -8771,24 +8771,24 @@ linux_ldnmp() {
 
 
 	  ldnmp_web_on
-	  echo "データベースアドレス: mysql"
+	  echo "数据库地址: mysql"
 	  echo "データベースポート: 3306"
 	  echo "データベース名:$dbname"
 	  echo "ユーザー名:$dbuse"
 	  echo "パスワード：$dbusepasswd"
 	  echo ""
 	  echo "redisアドレス: redis"
-	  echo "redis パスワード: デフォルトでは入力されていません"
-	  echo "Redis ポート: 6379"
+	  echo "redis密码: 默认不填写"
+	  echo "redis端口: 6379"
 	  echo ""
-	  echo "ウェブサイトURL：https://$yuming"
+	  echo "网站url: https://$yuming"
 	  echo "バックエンドのログイン パス: /admin"
 	  echo "------------------------"
 	  echo "ユーザー名: 管理者"
 	  echo "パスワード: 管理者"
 	  echo "------------------------"
 	  echo "ログイン時に右上隅に赤色の error0 が表示される場合は、次のコマンドを使用してください。"
-	  echo "私も、なぜユニコーンナンバーカードがこんなに面倒で、問題が多いのか、とても腹が立っています。"
+	  echo "我也很气愤独角数卡为啥这么麻烦，会有这样的问题！"
 	  echo "sed -i 's/ADMIN_HTTPS=false/ADMIN_HTTPS=true/g' /home/web/html/$yuming/dujiaoka/.env"
 
 		;;
@@ -8796,9 +8796,9 @@ linux_ldnmp() {
 	  7)
 	  clear
 	  # フララムフォーラム
-	  webname="フララムフォーラム"
+	  webname="flarum论坛"
 	  send_stats "インストール$webname"
-	  echo "導入を開始する$webname"
+	  echo "开始部署 $webname"
 	  add_yuming
 	  repeat_add_yuming
 	  ldnmp_install_status
@@ -8848,7 +8848,7 @@ linux_ldnmp() {
 	  echo "データベースアドレス: mysql"
 	  echo "データベース名:$dbname"
 	  echo "ユーザー名:$dbuse"
-	  echo "パスワード：$dbusepasswd"
+	  echo "密码: $dbusepasswd"
 	  echo "テーブル接頭辞: flarum_"
 	  echo "管理者情報を自分で設定可能"
 
@@ -8859,7 +8859,7 @@ linux_ldnmp() {
 	  # typecho
 	  webname="typecho"
 	  send_stats "インストール$webname"
-	  echo "導入を開始する$webname"
+	  echo "开始部署 $webname"
 	  add_yuming
 	  repeat_add_yuming
 	  ldnmp_install_status
@@ -8893,7 +8893,7 @@ linux_ldnmp() {
 	  echo "データベースアドレス: mysql"
 	  echo "ユーザー名:$dbuse"
 	  echo "パスワード：$dbusepasswd"
-	  echo "データベース名:$dbname"
+	  echo "数据库名: $dbname"
 
 		;;
 
@@ -8934,7 +8934,7 @@ linux_ldnmp() {
 	  ldnmp_web_on
 	  echo "データベースアドレス: mysql"
 	  echo "データベースポート: 3306"
-	  echo "データベース名:$dbname"
+	  echo "数据库名: $dbname"
 	  echo "ユーザー名:$dbuse"
 	  echo "パスワード：$dbusepasswd"
 		;;
@@ -9623,7 +9623,7 @@ moltbot_menu() {
 		echo "5.機種変更"
 		echo "6. TGに接続コードを入力します"
 		echo "--------------------"
-		echo "7.アップデート"
+		echo "7. アップデート"
 		echo "8. アンインストール"
 		echo "--------------------"
 		echo "0. 前のメニューに戻る"
@@ -9780,7 +9780,7 @@ while true; do
 
 	  echo -e "${gl_kjlan}1.   ${color1}パゴダパネル正式版${gl_kjlan}2.   ${color2}aaPanel パゴダ国際版"
 	  echo -e "${gl_kjlan}3.   ${color3}1Panel 新世代管理パネル${gl_kjlan}4.   ${color4}NginxProxyManager 視覚化パネル"
-	  echo -e "${gl_kjlan}5.   ${color5}OpenList マルチストア ファイル リスト プログラム${gl_kjlan}6.   ${color6}Ubuntu リモート デスクトップ Web エディション"
+	  echo -e "${gl_kjlan}5.   ${color5}OpenList マルチストア ファイル リスト プログラム${gl_kjlan}6.   ${color6}Ubuntu リモート デスクトップ Web バージョン"
 	  echo -e "${gl_kjlan}7.   ${color7}Nezha Probe VPS 監視パネル${gl_kjlan}8.   ${color8}QBオフラインBT磁気ダウンロードパネル"
 	  echo -e "${gl_kjlan}9.   ${color9}Poste.io メール サーバー プログラム${gl_kjlan}10.  ${color10}RocketChat 複数人オンライン チャット システム"
 	  echo -e "${gl_kjlan}-------------------------"
@@ -9818,7 +9818,7 @@ while true; do
 	  echo -e "${gl_kjlan}63.  ${color63}OpenWebUI セルフホスト型 AI プラットフォーム${gl_huang}★${gl_bai}             ${gl_kjlan}64.  ${color64}ITツールツールボックス"
 	  echo -e "${gl_kjlan}65.  ${color65}n8n自動ワークフロープラットフォーム${gl_huang}★${gl_bai}               ${gl_kjlan}66.  ${color66}yt-dlp ビデオ ダウンロード ツール"
 	  echo -e "${gl_kjlan}67.  ${color67}ddns-go ダイナミック DNS 管理ツール${gl_huang}★${gl_bai}            ${gl_kjlan}68.  ${color68}AllinSSL 証明書管理プラットフォーム"
-	  echo -e "${gl_kjlan}69.  ${color69}SFTPGo ファイル転送ツール${gl_kjlan}70.  ${color70}AstBot チャットボット フレームワーク"
+	  echo -e "${gl_kjlan}69.  ${color69}SFTPGo ファイル転送ツール${gl_kjlan}70.  ${color70}AstrBot チャットボット フレームワーク"
 	  echo -e "${gl_kjlan}-------------------------"
 	  echo -e "${gl_kjlan}71.  ${color71}Navidrome プライベート ミュージック サーバー${gl_kjlan}72.  ${color72}bitwarden パスワードマネージャー${gl_huang}★${gl_bai}"
 	  echo -e "${gl_kjlan}73.  ${color73}LibreTV プライベートムービー${gl_kjlan}74.  ${color74}MoonTV のプライベート ムービー"
@@ -11695,7 +11695,7 @@ while true; do
 
 		}
 
-		local docker_describe="OpenWebUI は大規模な言語モデルの Web ページ フレームワークであり、公式の簡易バージョンではすべての主要モデルへの API アクセスがサポートされています。"
+		local docker_describe="OpenWebUI は大規模な言語モデルの Web ページ フレームワークであり、公式の合理化されたバージョンでは、すべての主要なモデルへの API アクセスがサポートされています。"
 		local docker_url="公式サイト紹介：${gh_https_url}github.com/open-webui/open-webui"
 		local docker_use=""
 		local docker_passwd=""
@@ -11860,7 +11860,7 @@ while true; do
 
 		}
 
-		local docker_describe="オープンソース AI チャットボット フレームワーク。WeChat、QQ、TG による大規模 AI モデルへのアクセスをサポート"
+		local docker_describe="オープンソースの AI チャットボット フレームワーク。WeChat、QQ、TG による AI の大規模モデルへのアクセスをサポート"
 		local docker_url="公式サイト紹介：https://astrbot.app/"
 		local docker_use="echo \"ユーザー名: astrbot パスワード: astrbot\""
 		local docker_passwd=""
@@ -12164,7 +12164,7 @@ while true; do
 
 		  local app_id="80"
 		  local app_name="リンクワーデンのブックマーク管理"
-		  local app_text="タグ付け、検索、チーム コラボレーションをサポートする、オープン ソースの自己ホスト型ブックマーク管理プラットフォーム。"
+		  local app_text="タグ付け、検索、チームコラボレーションをサポートする、オープンソースの自己ホスト型ブックマーク管理プラットフォーム。"
 		  local app_url="公式サイト：https://linkwarden.app/"
 		  local docker_name="linkwarden-linkwarden-1"
 		  local docker_port="8080"
@@ -12503,7 +12503,7 @@ while true; do
 
 		}
 
-		local docker_describe="オープンソースの無料の自作ライブ ブロードキャスト プラットフォーム"
+		local docker_describe="オープンソース、無料の自社構築ライブ ブロードキャスト プラットフォーム"
 		local docker_url="公式サイト紹介：https://owncast.online"
 		local docker_use="echo \"管理者ページにアクセスするには、アクセス アドレスの後に /admin を続けます\""
 		local docker_passwd="echo \"初期アカウント: admin 初期パスワード: abc123 ログイン後、時間内にログイン パスワードを変更してください\""
@@ -13438,7 +13438,7 @@ discourse,yunsou,ahhhhfs,nsgame,gying" \
 
 		}
 
-		local docker_describe="これは、強力なマルチフォーマット ファイル変換ツールです (ドキュメント、画像、オーディオ、ビデオなどをサポート)。ドメイン名アクセスを追加することを強くお勧めします。"
+		local docker_describe="これは、強力なマルチフォーマット ファイル変換ツール (ドキュメント、画像、オーディオ、ビデオなどをサポート) です。ドメイン名アクセスを追加することを強くお勧めします。"
 		local docker_url="プロジェクトアドレス:${gh_https_url}github.com/c4illin/ConvertX"
 		local docker_use=""
 		local docker_passwd=""
@@ -13621,8 +13621,8 @@ linux_work() {
 	  send_stats "バックエンドワークスペース"
 	  echo -e "バックエンドワークスペース"
 	  echo -e "システムは、バックグラウンドで永続的に実行できるワークスペースを提供し、長期的なタスクを実行するために使用できます。"
-	  echo -e "SSH を切断しても、ワークスペース内のタスクは中断されず、タスクはバックグラウンドで残ります。"
-	  echo -e "${gl_huang}ヒント：${gl_bai}ワークスペースに入ったら、Ctrl+b を使用し、d だけを押してワークスペースを終了します。"
+	  echo -e "SSH を切断しても、ワークスペース内のタスクは中断されず、バックグラウンド タスクは継続されます。"
+	  echo -e "${gl_huang}ヒント：${gl_bai}ワークスペースに入ったら、Ctrl+b を使用し、次に d を単独で押してワークスペースを終了します。"
 	  echo -e "${gl_kjlan}------------------------"
 	  echo "現在存在するワークスペースのリスト"
 	  echo -e "${gl_kjlan}------------------------"
@@ -14017,7 +14017,7 @@ log_menu() {
 		case $choice in
 			1)
 				send_stats "最近のログを表示する"
-				read -rp "最近のログ行を何行表示しましたか? [デフォルト 100]:" lines
+				read -rp "最新のログ行を表示しますか? [デフォルト 100]:" lines
 				lines=${lines:-100}
 				journalctl -n "$lines" --no-pager
 				read -rp "Enter を押して続行します..."
@@ -14548,8 +14548,8 @@ EOF
 						;;
 					2)
 						rm -f /etc/gai.conf
-						echo "IPv6優先に切り替えました"
-						send_stats "IPv6優先に切り替えました"
+						echo "最初にIPv6に切り替えました"
+						send_stats "最初にIPv6に切り替えました"
 						;;
 
 					3)
@@ -14756,7 +14756,7 @@ EOF
 				# 現在のシステムのタイムゾーンを取得する
 				local timezone=$(current_timezone)
 
-				# 現在のシステム時刻を取得します
+				# 現在のシステム時刻を取得する
 				local current_time=$(date +"%Y-%m-%d %H:%M:%S")
 
 				# タイムゾーンと時間を表示する
@@ -15544,7 +15544,7 @@ linux_file() {
 					continue
 				fi
 
-				read -e -p "宛先パス (新しいファイル名またはディレクトリ名を含む) を入力してください:" dest_path
+				read -e -p "宛先パス (新しいファイルまたはディレクトリ名を含む) を入力してください:" dest_path
 				if [ -z "$dest_path" ]; then
 					echo "エラー: 宛先パスを入力してください。"
 					send_stats "ファイルまたはディレクトリの移動に失敗しました: 宛先パスが指定されていません"
@@ -15564,7 +15564,7 @@ linux_file() {
 					continue
 				fi
 
-				read -e -p "宛先パス (新しいファイル名またはディレクトリ名を含む) を入力してください:" dest_path
+				read -e -p "宛先パス (新しいファイルまたはディレクトリ名を含む) を入力してください:" dest_path
 				if [ -z "$dest_path" ]; then
 					echo "エラー: 宛先パスを入力してください。"
 					send_stats "ファイルまたはディレクトリのコピーに失敗しました: 宛先パスが指定されていません"
@@ -15700,7 +15700,7 @@ while true; do
 	  echo -e "${gl_kjlan}------------------------${gl_bai}"
 	  echo -e "${gl_kjlan}サーバーリスト管理${gl_bai}"
 	  echo -e "${gl_kjlan}1.  ${gl_bai}サーバーの追加${gl_kjlan}2.  ${gl_bai}サーバーの削除${gl_kjlan}3.  ${gl_bai}サーバーの編集"
-	  echo -e "${gl_kjlan}4.  ${gl_bai}バックアップクラスタ${gl_kjlan}5.  ${gl_bai}クラスターを復元する"
+	  echo -e "${gl_kjlan}4.  ${gl_bai}バックアップクラスタ${gl_kjlan}5.  ${gl_bai}クラスタを復元する"
 	  echo -e "${gl_kjlan}------------------------${gl_bai}"
 	  echo -e "${gl_kjlan}タスクをバッチで実行する${gl_bai}"
 	  echo -e "${gl_kjlan}11. ${gl_bai}テクノロジ ライオン スクリプトをインストールする${gl_kjlan}12. ${gl_bai}アップデートシステム${gl_kjlan}13. ${gl_bai}システムをクリーンアップする"
@@ -15745,7 +15745,7 @@ while true; do
 
 		  5)
 			  clear
-			  send_stats "クラスターを復元する"
+			  send_stats "クラスタを復元する"
 			  echo "servers.py をアップロードし、任意のキーを押してアップロードを開始してください。"
 			  echo -e "をアップロードしてください${gl_huang}servers.py${gl_bai}ファイルに${gl_huang}/root/cluster/${gl_bai}復元完了！"
 			  break_end
@@ -15819,10 +15819,10 @@ echo "------------------------"
 echo -e "${gl_lan}DMIT 四半期あたり 28 ドル 米国 CN2GIA 1 コア 2G メモリ 20G ハード ドライブ 1 か月あたり 800G トラフィック${gl_bai}"
 echo -e "${gl_bai}URL: https://www.dmit.io/aff.php?aff=4966&pid=100${gl_bai}"
 echo "------------------------"
-echo -e "${gl_zi}V.PS 月額 6.9 ドル 東京ソフトバンク 2 コア 1G メモリ 20G ハードドライブ 月額 1T トラフィック${gl_bai}"
+echo -e "${gl_zi}V.PS 月額 6.9 ドル 東京ソフトバンク 2 コア 1G メモリ 20G ハードドライブ 月額トラフィック 1T${gl_bai}"
 echo -e "${gl_bai}URL：https://vps.hosting/cart/tokyo-cloud-kvm-vps/?id=148&?affid=1355&?affid=1355${gl_bai}"
 echo "------------------------"
-echo -e "${gl_kjlan}さらに人気のある VPS セール${gl_bai}"
+echo -e "${gl_kjlan}さらに人気のある VPS オファー${gl_bai}"
 echo -e "${gl_bai}ウェブサイト：https://kejilion.pro/topvps/${gl_bai}"
 echo "------------------------"
 echo ""
@@ -16077,7 +16077,7 @@ echo "仮想メモリ k スワップを設定 2048"
 echo "仮想タイムゾーンを設定します k 時間 アジア/上海 | k タイムゾーン アジア/上海"
 echo "システムごみ箱のゴミ箱 | k hz | k ごみ箱"
 echo "システムバックアップ機能 kバックアップ | k bf | k バックアップ"
-echo "ssh リモート接続ツール k ssh | kリモート接続"
+echo "ssh リモート接続ツール k ssh | k リモート接続"
 echo "rsync リモート同期ツール k rsync | k リモート同期"
 echo "ハードディスク管理ツール k ディスク | k ハードディスクの管理"
 echo "イントラネット普及率 (サーバー) k frps"
@@ -16086,7 +16086,7 @@ echo "ソフトウェア起動 k start sshd | sshdを起動します"
 echo "ソフトウェア停止 k 停止 sshd | k ストップ sshd"
 echo "ソフトウェア再起動 k 再起動 sshd | k sshdを再起動します"
 echo "ソフトウェアのステータスを確認します。 k ステータス sshd | kステータスsshd"
-echo "k ドッカーを有効にする | k 自動開始ドッカー | k ソフトウェアの起動時に Docker を有効にする"
+echo "k ドッカーを有効にする | k 自動開始ドッカー | k 起動時に docker を起動します"
 echo "ドメイン名証明書アプリケーション k ssl"
 echo "ドメイン名証明書の有効期限のクエリ k ssl ps"
 echo "docker 管理プレーン k docker"
@@ -16096,7 +16096,7 @@ echo "docker イメージ管理 k docker img |k docker image"
 echo "LDNMP サイト管理 k Web"
 echo "LDNMP キャッシュのクリーニング k Web キャッシュ"
 echo "WordPress をインストールします。 kワードプレス | k wp xxx.com"
-echo "リバース プロキシをインストールします k fd |k rp |k リバース プロキシ |k fd xxx.com"
+echo "リバース プロキシ k fd |k rp |k リバース プロキシ |k fd xxx.com をインストールします。"
 echo "ロード バランシングのインストール k ロード バランシング |k ロード バランシング"
 echo "L4 ロード バランシング k ストリーム |k L4 ロード バランシングをインストールする"
 echo "ファイアウォール パネル k fhq |k ファイアウォール"

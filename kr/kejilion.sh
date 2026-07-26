@@ -59,9 +59,9 @@ CheckFirstRun_true() {
 
 
 
-# 이 기능은 함수에 묻혀있는 정보를 수집하고 사용자가 사용하는 현재 스크립트 버전 번호, 사용 시간, 시스템 버전, CPU 아키텍처, 시스템 국가 및 기능 이름을 기록합니다. 민감한 정보는 포함되어 있지 않으니 걱정하지 마세요! 저를 믿어주세요!
+# 함수에 묻혀있는 정보를 수집하고 사용자가 사용하는 현재 스크립트 버전 번호, 사용 시간, 시스템 버전, CPU 아키텍처, 시스템 국가 및 기능 이름을 기록하는 기능입니다. 민감한 정보는 포함되어 있지 않으니 걱정하지 마세요! 저를 믿어주세요!
 # 이 기능은 왜 설계되었나요? 그 목적은 사용자가 사용하고 싶어하는 기능을 더 잘 이해하고, 기능을 더욱 최적화하고 사용자 요구에 맞는 더 많은 기능을 출시하는 것입니다.
-# send_stats 함수 호출 위치에 대한 전문을 검색할 수 있습니다. 투명하고 오픈 소스입니다. 불편하신 점이 있으시면 이용을 거부하실 수 있습니다.
+# send_stats 함수 호출 위치에 대한 전문을 검색할 수 있습니다. 투명하고 오픈 소스입니다. 우려되는 사항이 있는 경우 이용을 거부하실 수 있습니다.
 
 
 
@@ -1200,7 +1200,7 @@ iptables_panel() {
 				  ;;
 
 			  17)
-				  read -e -p "지워진 국가 코드를 입력하십시오(여러 국가 코드는 CN US JP와 같이 공백으로 구분될 수 있음)." country_code
+				  read -e -p "삭제된 국가 코드를 입력하십시오(여러 국가 코드는 CN US JP와 같이 공백으로 구분될 수 있음)." country_code
 				  manage_country_rules unblock $country_code
 				  send_stats "명확한 국가$country_codeIP"
 				  ;;
@@ -1316,7 +1316,7 @@ install_ldnmp_conf() {
   wget -O /home/web/docker-compose.yml ${gh_proxy}raw.githubusercontent.com/kejilion/docker/main/LNMP-docker-compose-10.yml
   dbrootpasswd=$(openssl rand -base64 16) ; dbuse=$(openssl rand -hex 4) ; dbusepasswd=$(openssl rand -base64 8)
 
-  # docker-compose.yml 파일에서 교체
+  # docker-compose.yml 파일에서 바꾸기
   sed -i "s#webroot#$dbrootpasswd#g" /home/web/docker-compose.yml
   sed -i "s#kejilionYYDS#$dbusepasswd#g" /home/web/docker-compose.yml
   sed -i "s#kejilion#$dbuse#g" /home/web/docker-compose.yml
@@ -1355,7 +1355,7 @@ auto_optimize_dns() {
 	# 국가 코드(예: CN, US 등)를 가져옵니다.
 	local country=$(curl -s ipinfo.io/country)
 
-	# 국가에 따라 DNS 설정
+	# 국가별 DNS 설정
 	if [ "$country" = "CN" ]; then
 		local dns1_ipv4="223.5.5.5"
 		local dns2_ipv4="183.60.83.19"
@@ -1540,7 +1540,7 @@ certs_status() {
 		echo -e "3. 네트워크 구성 문제 ➠ Cloudflare Warp 등 가상 네트워크를 사용하는 경우 일시적으로 종료하세요."
 		echo -e "4. 방화벽 제한사항 ➠ 포트 80/443이 열려 있는지 확인하고 접근이 가능한지 확인하세요."
 		echo -e "5. 신청 횟수가 한도를 초과했습니다. ➠ Let's Encrypt에는 주간 한도(5회/도메인 이름/주)가 있습니다."
-		echo -e "6. 국내 등록 제한 ➠ 중국 ​​본토 환경의 경우 도메인 이름 등록 여부를 확인하세요."
+		echo -e "6. 국내 등록 제한 ➠ 중국 ​​본토 환경의 경우 도메인 이름 등록 여부를 확인하시기 바랍니다."
 		echo "------------------------"
 		echo "1. 재적용 2. 기존 인증서 가져오기 0. 종료"
 		echo "------------------------"
@@ -1632,7 +1632,7 @@ check_ip_and_get_access_port() {
 	local ipv6_pattern='^(([0-9A-Fa-f]{1,4}:){1,7}:|([0-9A-Fa-f]{1,4}:){7,7}[0-9A-Fa-f]{1,4}|::1)$'
 
 	if [[ "$yuming" =~ $ipv4_pattern || "$yuming" =~ $ipv6_pattern ]]; then
-		read -e -p "액세스/수신 포트를 입력하고 Enter를 눌러 기본적으로 80을 사용하십시오." access_port
+		read -e -p "请输入访问/监听端口，回车默认使用 80: " access_port
 		access_port=${access_port:-80}
 	fi
 }
@@ -2241,7 +2241,7 @@ web_security() {
 					  echo "--------------"
 					  read -e -p "CF의 계좌번호를 입력하세요:" cfuser
 					  read -e -p "CF의 글로벌 API 키를 입력하세요:" cftoken
-					  read -e -p "CF에 도메인 이름의 영역 ID를 입력하세요." cfzonID
+					  read -e -p "输入CF中域名的区域ID: " cfzonID
 
 					  cd ~
 					  install jq bc
@@ -2316,21 +2316,21 @@ check_nginx_compression() {
 
 	local CONFIG_FILE="/home/web/nginx.conf"
 
-	# zstd가 켜져 있고 주석 처리가 해제되어 있는지 확인하세요. (전체 줄은 zstd on으로 시작됩니다.)
+	# 检查 zstd 是否开启且未被注释（整行以 zstd on; 开头）
 	if grep -qE '^\s*zstd\s+on;' "$CONFIG_FILE"; then
 		zstd_status="zstd 압축이 켜져 있습니다"
 	else
 		zstd_status=""
 	fi
 
-	# brotli가 활성화되어 있고 주석 처리가 해제되어 있는지 확인하세요.
+	# 检查 brotli 是否开启且未被注释
 	if grep -qE '^\s*brotli\s+on;' "$CONFIG_FILE"; then
 		br_status="br압축이 켜져 있습니다"
 	else
 		br_status=""
 	fi
 
-	# gzip이 활성화되어 있고 주석 처리가 해제되어 있는지 확인하세요.
+	# 检查 gzip 是否开启且未被注释
 	if grep -qE '^\s*gzip\s+on;' "$CONFIG_FILE"; then
 		gzip_status="gzip 압축이 켜져 있습니다"
 	else
@@ -2346,21 +2346,21 @@ web_optimization() {
 		  	  check_ldnmp_mode
 			  check_nginx_compression
 			  clear
-			  send_stats "LDNMP 환경 최적화"
+			  send_stats "优化LDNMP环境"
 			  echo -e "LDNMP 환경 최적화${gl_lv}${mode_info}${gzip_status}${br_status}${zstd_status}${gl_bai}"
 			  echo "------------------------"
-			  echo "1. 표준 모드 2. 고성능 모드(2H4G 이상 권장)"
+			  echo "1. 标准模式              2. 高性能模式 (推荐2H4G以上)"
 			  echo "------------------------"
 			  echo "3. gzip 압축 켜기 4. gzip 압축 끄기"
-			  echo "5. br 압축을 켭니다. 6. br 압축을 끕니다."
-			  echo "7. zstd 압축을 켭니다. 8. zstd 압축을 끕니다."
+			  echo "5. 开启br压缩            6. 关闭br压缩"
+			  echo "7. 开启zstd压缩          8. 关闭zstd压缩"
 			  echo "------------------------"
-			  echo "0. 이전 메뉴로 돌아가기"
+			  echo "0. 返回上一级选单"
 			  echo "------------------------"
 			  read -e -p "선택사항을 입력하세요:" sub_choice
 			  case $sub_choice in
 				  1)
-				  send_stats "사이트 표준 모드"
+				  send_stats "站点标准模式"
 
 				  local cpu_cores=$(nproc)
 				  local connections=$((1024 * ${cpu_cores}))
@@ -2368,13 +2368,13 @@ web_optimization() {
 				  sed -i "s/worker_connections.*/worker_connections ${connections};/" /home/web/nginx.conf
 
 
-				  # PHP 튜닝
+				  # php调优
 				  wget -O /home/optimized_php.ini ${gh_proxy}raw.githubusercontent.com/kejilion/sh/main/optimized_php.ini
 				  docker cp /home/optimized_php.ini php:/usr/local/etc/php/conf.d/optimized_php.ini
 				  docker cp /home/optimized_php.ini php74:/usr/local/etc/php/conf.d/optimized_php.ini
 				  rm -rf /home/optimized_php.ini
 
-				  # php调优
+				  # PHP 튜닝
 				  wget -O /home/www.conf ${gh_proxy}raw.githubusercontent.com/kejilion/sh/main/www-1.conf
 				  docker cp /home/www.conf php:/usr/local/etc/php-fpm.d/www.conf
 				  docker cp /home/www.conf php74:/usr/local/etc/php-fpm.d/www.conf
@@ -2386,7 +2386,7 @@ web_optimization() {
 				  fix_phpfpm_conf php
 				  fix_phpfpm_conf php74
 
-				  # MySQL 튜닝
+				  # mysql调优
 				  wget -O /home/custom_mysql_config.cnf ${gh_proxy}raw.githubusercontent.com/kejilion/sh/main/custom_mysql_config-1.cnf
 				  docker cp /home/custom_mysql_config.cnf mysql:/etc/mysql/conf.d/
 				  rm -rf /home/custom_mysql_config.cnf
@@ -2409,7 +2409,7 @@ web_optimization() {
 				  sed -i "s/worker_processes.*/worker_processes ${cpu_cores};/" /home/web/nginx.conf
 				  sed -i "s/worker_connections.*/worker_connections ${connections};/" /home/web/nginx.conf
 
-				  # PHP 튜닝
+				  # php调优
 				  wget -O /home/optimized_php.ini ${gh_proxy}raw.githubusercontent.com/kejilion/sh/main/optimized_php.ini
 				  docker cp /home/optimized_php.ini php:/usr/local/etc/php/conf.d/optimized_php.ini
 				  docker cp /home/optimized_php.ini php74:/usr/local/etc/php/conf.d/optimized_php.ini
@@ -2496,7 +2496,7 @@ check_docker_app() {
 # check_docker_app() {
 
 # if docker ps -a --format '{{.Names}}' 2>/dev/null | grep -q "$docker_name"; then
-# check_docker="${gl_lv}가 ${gl_bai}를 설치했습니다."
+# check_docker="${gl_lv}已安装${gl_bai}"
 # else
 # check_docker="${gl_hui}未安装${gl_bai}"
 # fi
@@ -2550,10 +2550,10 @@ check_docker_image_update() {
 	local full_image_name=$(echo "$container_info" | cut -d',' -f2)
 	local container_created_ts=$(date -d "$container_created" +%s 2>/dev/null)
 
-	# 3. 지능형 라우팅 판단
+	# 3. 智能路由判断
 	if [[ "$full_image_name" == ghcr.io* ]]; then
 		# --- 场景 A: 镜像在 GitHub (ghcr.io) ---
-		# 웨어하우스 경로를 추출합니다(예: ghcr.io/onexru/oneimg -> onexru/oneimg).
+		# 提取仓库路径，例如 ghcr.io/onexru/oneimg -> onexru/oneimg
 		local repo_path=$(echo "$full_image_name" | sed 's/ghcr.io\///' | cut -d':' -f1)
 		# 注意：ghcr.io 的 API 比较复杂，通常最快的方法是查 GitHub Repo 的 Release
 		local api_url="https://api.github.com/repos/$repo_path/releases/latest"
